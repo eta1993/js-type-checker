@@ -1,3 +1,3 @@
 # js-type-checker
 
-JS Native Type Checker using `Object.prototype.toString.call`
+JS native types checker using `Object.prototype.toString.call`
