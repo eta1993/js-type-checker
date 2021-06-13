@@ -2,7 +2,7 @@
 
 JS native types checker using `Object.prototype.toString.call`
 
-## Checker Methods
+## Checkers
 
 - isArray
 - isBoolean
@@ -16,7 +16,7 @@ JS native types checker using `Object.prototype.toString.call`
 - isString
 - isUndefined
 
-## Helper Methods
+## Helpers
 - inArray(needle, haystack)
 - isObjectEmpty
 - isTruthy
