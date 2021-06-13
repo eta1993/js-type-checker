@@ -3,20 +3,19 @@
 JS native types checker using `Object.prototype.toString.call`
 
 ## Checkers
-
-- isArray
-- isBoolean
-- isDate
-- isEmpty
+- isArray(`value: ?Array`)`: Boolean`
+- isBoolean(`value: ?Boolean`)`: Boolean`
+- isDate(`value: ?Date`)`: Boolean`
+- isEmpty(`value: ?{Object|Array|*}`)`: Boolean`
   - Checks for empty objects, array, and falsy values 
-- isFunction
-- isNull
-- isNumber
-- isObject
-- isString
-- isUndefined
+- isFunction(`value: ?Function`)`: Boolean`
+- isNull(`value: ?Null`)`: Boolean`
+- isNumber(`value: ?Number`)`: Boolean`
+- isObject(`value: ?Object`)`: Boolean`
+- isString(`value: ?String`)`: Boolean`
+- isUndefined(`value: ?Undefined`)`: Boolean`
 
 ## Helpers
-- inArray(needle, haystack)
-- isObjectEmpty
-- isTruthy
+- inArray(`needle: String`, `haystack: Array`)`: Boolean`
+- isObjectEmpty(`value: ?Object`)`: Boolean`
+- isTruthy(`value: *`)`: Boolean`
