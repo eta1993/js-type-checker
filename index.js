@@ -68,7 +68,7 @@ module.exports = {
     isBoolean,
     isDate,
     isEmpty(value) {
-        if (!isTruthy(value)) {
+        if (!value) {
             return true;
         }
         if (isObject(value)) {
