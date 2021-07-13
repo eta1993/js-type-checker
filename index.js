@@ -37,10 +37,8 @@ function getType(value) {
     return type.substring(begin, end).toLowerCase();
 }
 
-const isTruthy = (value)            => Boolean(value);
-const isArray  = (value)            => Array.isArray(value);
-const inArray  = (needle, haystack) => (haystack.indexOf(needle) !== -1);
-
+const inArray     = (needle, haystack) => (haystack.indexOf(needle) !== -1);
+const isArray     = (value) => Array.isArray(value);
 const isBoolean   = (value) => (getType(value) === "boolean");
 const isDate      = (value) => (getType(value) === "date");
 const isString    = (value) => (getType(value) === "string");
@@ -84,6 +82,5 @@ module.exports = {
     isObject,
     isObjectEmpty,
     isString,
-    isTruthy,
     isUndefined
 };
