@@ -1,0 +1,20 @@
+{
+  "name": "js-type-checker",
+  "version": "1.0.0",
+  "description": "JS native types checker using `Object.prototype.toString.call`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eta1993/js-type-checker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eta1993/js-type-checker/issues"
+  },
+  "homepage": "https://github.com/eta1993/js-type-checker#readme"
+}
