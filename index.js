@@ -35,6 +35,10 @@ function getType(value) {
     return type.substring(8, type.length - 1).toLowerCase();
 }
 
+function test(pattern, value) {
+    return new RegExp(pattern).test(`${value}`);
+}
+
 const inArray     = (needle, haystack) => (haystack.indexOf(needle) !== -1);
 const isArray     = (value) => Array.isArray(value);
 const isBoolean   = (value) => (getType(value) === "boolean");
@@ -45,6 +49,11 @@ const isFunction  = (value) => (getType(value) === "function");
 const isNull      = (value) => (getType(value) === "null");
 const isUndefined = (value) => (getType(value) === "undefined");
 const isObject    = (value) => (getType(value) === "object");
+const isInt       = (value) => test("^([+-]?[0-9]+)+$", value);
+const isFloat     = (value) => (
+    test("^([+-]?[0-9]+[\.]+[0-9]+)+$", value)
+    && `${value}`.split(".").length === 2 //jslint-ignore-line
+);
 
 function getSize(value) {
     const type = getType(value);
@@ -73,7 +82,9 @@ module.exports = Object.freeze({
         }
         return false;
     },
+    isFloat,
     isFunction,
+    isInt,
     isNull,
     isNumber,
     isObject,
