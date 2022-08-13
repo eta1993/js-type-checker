@@ -14,8 +14,12 @@ JS native types checker using `Object.prototype.toString.call`
 - isObject(`value: ?Object`)`: Boolean`
 - isString(`value: ?String`)`: Boolean`
 - isUndefined(`value: ?Undefined`)`: Boolean`
+- isInt(`value: ?Undefined`)`: Boolean`
+- isFloat(`value: ?Undefined`)`: Boolean`
 
 ## Helpers
 - inArray(`needle: String`, `haystack: Array`)`: Boolean`
 - isObjectEmpty(`value: ?Object`)`: Boolean`
 - isTruthy(`value: *`)`: Boolean`
+- toInt(`value: ?Undefined`, `fallback: Int`)`: Int`
+- isFloat(`value: ?Undefined`, `fallback: Float`)`: Float`
