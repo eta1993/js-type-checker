@@ -49,13 +49,12 @@ const isObject    = (value) => (getType(value) === "object");
 function getSize(value) {
     const type = getType(value);
     if (type === "object") {
-        return (
-            (type === "array")
-            ? value.length
-            : Object.keys(value).length
-        );
+        return Object.keys(value).length;
+    } else if (type === "array") {
+        return value.length;
+    } else {
+        return 0;
     }
-    return 0;
 }
 
 const isObjectEmpty = (object) => (getSize(object) === 0);
