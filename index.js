@@ -14,18 +14,27 @@
     indexOf
     keys
     exports
+    freeze
     inArray
     isBoolean
     isDate
     isEmpty
+    isFloat
     isFunction
+    isInt
+    isNaN
     isNull
     isNumber
     isObject
     isObjectEmpty
+    isRequest
+    isResponse
     isString
     isTruthy
     isUndefined
+    test
+    toFloat
+    toInt
 */
 
 "use strict";
@@ -53,19 +62,19 @@ const isResponse  = (value) => (getType(value) === "response");
 const isRequest   = (value) => (getType(value) === "request");
 const isInt       = (value) => test("^([+-]?[0-9]+)+$", value);
 const isFloat     = (value) => (
-    test("^([+-]?[0-9]+[\.]+[0-9]+)+$", value)
+    test("^([+-]?[0-9]+[\\.]+[0-9]+)+$", value)
     && `${value}`.split(".").length === 2 //jslint-ignore-line
 );
 
 function toInt(value, fallback) {
-    if (isNaN(fallback) || !isInt(fallback)) {
+    if (Number.isNaN(fallback) || !isInt(fallback)) {
         fallback = NaN;
     }
     return parseInt(value) || fallback;
 }
 
 function toFloat(value, fallback) {
-    if (isNaN(fallback) || !isFloat(fallback)) {
+    if (Number.isNaN(fallback) || !isFloat(fallback)) {
         fallback = NaN;
     }
     return parseFloat(value) || fallback;
@@ -105,6 +114,8 @@ module.exports = Object.freeze({
     isNumber,
     isObject,
     isObjectEmpty,
+    isRequest,
+    isResponse,
     isString,
     isUndefined,
     toFloat,
