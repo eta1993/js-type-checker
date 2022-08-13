@@ -35,6 +35,10 @@ function getType(value) {
     return type.substring(8, type.length - 1).toLowerCase();
 }
 
+function test(pattern, value) {
+    return new RegExp(pattern).test(`${value}`);
+}
+
 const inArray     = (needle, haystack) => (haystack.indexOf(needle) !== -1);
 const isArray     = (value) => Array.isArray(value);
 const isBoolean   = (value) => (getType(value) === "boolean");
@@ -45,22 +49,40 @@ const isFunction  = (value) => (getType(value) === "function");
 const isNull      = (value) => (getType(value) === "null");
 const isUndefined = (value) => (getType(value) === "undefined");
 const isObject    = (value) => (getType(value) === "object");
+const isInt       = (value) => test("^([+-]?[0-9]+)+$", value);
+const isFloat     = (value) => (
+    test("^([+-]?[0-9]+[\.]+[0-9]+)+$", value)
+    && `${value}`.split(".").length === 2 //jslint-ignore-line
+);
+
+function toInt(value, fallback) {
+    if (isNaN(fallback) || !isInt(fallback)) {
+        fallback = NaN;
+    }
+    return parseInt(value) || fallback;
+}
+
+function toFloat(value, fallback) {
+    if (isNaN(fallback) || !isFloat(fallback)) {
+        fallback = NaN;
+    }
+    return parseFloat(value) || fallback;
+}
 
 function getSize(value) {
     const type = getType(value);
     if (type === "object") {
-        return (
-            (type === "array")
-            ? value.length
-            : Object.keys(value).length
-        );
+        return Object.keys(value).length;
+    } else if (type === "array") {
+        return value.length;
+    } else {
+        return 0;
     }
-    return 0;
 }
 
 const isObjectEmpty = (object) => (getSize(object) === 0);
 
-module.exports = {
+module.exports = Object.freeze({
     inArray,
     isArray,
     isBoolean,
@@ -74,11 +96,15 @@ module.exports = {
         }
         return false;
     },
+    isFloat,
     isFunction,
+    isInt,
     isNull,
     isNumber,
     isObject,
     isObjectEmpty,
     isString,
-    isUndefined
-};
+    isUndefined,
+    toFloat,
+    toInt
+});
