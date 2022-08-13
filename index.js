@@ -49,6 +49,8 @@ const isFunction  = (value) => (getType(value) === "function");
 const isNull      = (value) => (getType(value) === "null");
 const isUndefined = (value) => (getType(value) === "undefined");
 const isObject    = (value) => (getType(value) === "object");
+const isResponse  = (value) => (getType(value) === "response");
+const isRequest   = (value) => (getType(value) === "request");
 const isInt       = (value) => test("^([+-]?[0-9]+)+$", value);
 const isFloat     = (value) => (
     test("^([+-]?[0-9]+[\.]+[0-9]+)+$", value)
