@@ -55,6 +55,20 @@ const isFloat     = (value) => (
     && `${value}`.split(".").length === 2 //jslint-ignore-line
 );
 
+function toInt(value, fallback) {
+    if (isNaN(fallback) || !isInt(fallback)) {
+        fallback = NaN;
+    }
+    return parseInt(value) || fallback;
+}
+
+function toFloat(value, fallback) {
+    if (isNaN(fallback) || !isFloat(fallback)) {
+        fallback = NaN;
+    }
+    return parseFloat(value) || fallback;
+}
+
 function getSize(value) {
     const type = getType(value);
     if (type === "object") {
@@ -90,5 +104,7 @@ module.exports = Object.freeze({
     isObject,
     isObjectEmpty,
     isString,
-    isUndefined
+    isUndefined,
+    toFloat,
+    toInt
 });
