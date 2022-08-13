@@ -59,7 +59,7 @@ function getSize(value) {
 
 const isObjectEmpty = (object) => (getSize(object) === 0);
 
-module.exports = {
+module.exports = Object.freeze({
     inArray,
     isArray,
     isBoolean,
@@ -80,4 +80,4 @@ module.exports = {
     isObjectEmpty,
     isString,
     isUndefined
-};
+});
