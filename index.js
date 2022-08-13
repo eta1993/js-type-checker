@@ -31,10 +31,8 @@
 "use strict";
 
 function getType(value) {
-    const begin = 8;
     const type  = Object.prototype.toString.call(value);
-    const end   = type.length - 1;
-    return type.substring(begin, end).toLowerCase();
+    return type.substring(8, type.length - 1).toLowerCase();
 }
 
 const inArray     = (needle, haystack) => (haystack.indexOf(needle) !== -1);
