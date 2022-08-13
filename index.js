@@ -105,6 +105,8 @@ module.exports = Object.freeze({
     isNumber,
     isObject,
     isObjectEmpty,
+    isRequest,
+    isResponse,
     isString,
     isUndefined,
     toFloat,
