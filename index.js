@@ -16,6 +16,7 @@
     exports
     freeze
     inArray
+    isAsyncFunction
     isBoolean
     isDate
     isEmpty
@@ -37,6 +38,8 @@
     toInt
 */
 
+// https://github.com/eta1993/js-type-checker.git
+
 "use strict";
 
 function getType(value) {
@@ -54,7 +57,10 @@ const isBoolean   = (value) => (getType(value) === "boolean");
 const isDate      = (value) => (getType(value) === "date");
 const isString    = (value) => (getType(value) === "string");
 const isNumber    = (value) => (getType(value) === "number");
-const isFunction  = (value) => (getType(value) === "function");
+const isFunction  = (value) => (
+    getType(value) === "function" || getType(value) === "asyncfunction"
+);
+const isAsyncFunction  = (value) => (getType(value) === "asyncfunction");
 const isNull      = (value) => (getType(value) === "null");
 const isUndefined = (value) => (getType(value) === "undefined");
 const isObject    = (value) => (getType(value) === "object");
@@ -93,9 +99,10 @@ function getSize(value) {
 
 const isObjectEmpty = (object) => (getSize(object) === 0);
 
-module.exports = Object.freeze({
+export default Object.freeze({
     inArray,
     isArray,
+    isAsyncFunction,
     isBoolean,
     isDate,
     isEmpty(value) {
